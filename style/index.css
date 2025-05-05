@@ -3,20 +3,21 @@
 :root {
   --couleur1: #101017;
   --couleur2: #080810;
-  --couleur3: ;
-  --couleur4: ;
+  --couleur3: #f5f5f5;
+  --couleur4: #1b3d76;
+
+
 }
 
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color: black;
 }
 
 body {
   background-color: var(--couleur1);
-  color: white;
+  color: var(--couleur3);
   font-family: "Inknut Antiqua", serif;
   display: flex;
   flex-direction: column;
@@ -34,8 +35,6 @@ body {
   margin-inline: auto;
 }
 .navbar {
-  background-color: antiquewhite;
-  color: black;
   aspect-ratio: 828/115;
   display: flex;
   flex-direction: column;
@@ -50,7 +49,7 @@ body {
 .logo {
   margin-right: auto;
   h3 {
-    border-block: 2px black solid;
+    border-block: 2px var(--couleur3) solid;
     width: 40%;
     font-size: .65rem;
   }
@@ -63,10 +62,8 @@ body {
   align-items: center;
   i {
     font-size: 1.5rem;
+    transition: .15s;
   }
-}
-.boutonnav {
-  margin-inline: auto;
 }
 .boutonmode, .boutoncompte {
   padding: 2.5%;
@@ -76,11 +73,13 @@ body {
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
+  color: var(--couleur3);
 }
 .boutonpanier {
   padding-inline: 2%;
   height: 50%;
   border-radius: 5px;
+  color: var(--couleur3);
   i {
     font-size: 1rem;
     padding-inline: 5px;
@@ -98,7 +97,7 @@ body {
   list-style: none;
   width: 100%;
   li {
-    border-inline: 1px black solid;
+    border-inline: 1px var(--couleur3) solid;
     margin-inline: auto;
     width: 100%;
     aspect-ratio: 3;
@@ -109,9 +108,9 @@ body {
     font-size: .75rem;
   }
   li:first-of-type {
-    border-left: 2px solid ;
+    border-left: 2px solid var(--couleur3);
   }
   li:last-of-type {
-    border-right: 2px solid;
+    border-right: 2px solid var(--couleur3);
   }
 }
