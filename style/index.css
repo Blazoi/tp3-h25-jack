@@ -125,4 +125,25 @@ body {
   width: 95%;
   aspect-ratio: 79/25;
   background-color: var(--couleur4);
+  border-radius: 5px;
+}
+
+/* CATEGORIES */
+
+.categories {
+  width: 95%;
+  aspect-ratio: 786/248;
+  margin-top: 2.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    height: 100%;
+    aspect-ratio: 1;
+    background-color: var(--couleur4);
+    border-radius: 5px;
+  }
+  div:nth-child(2) {
+    margin-inline: auto;
+  }
 }
