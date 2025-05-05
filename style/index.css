@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --couleur1: #01010c;
-  --couleur2: #04041b;
+  --couleur1: #101017;
+  --couleur2: #080810;
   --couleur3: ;
   --couleur4: ;
 }
@@ -10,7 +10,8 @@
 * {
   margin: 0;
   padding: 0;
-  
+  text-decoration: none;
+  color: black;
 }
 
 body {
@@ -26,7 +27,7 @@ body {
 
 .contenu {
   background-color: var(--couleur2);
-  height: 100%;
+  height: 100vh;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -35,40 +36,82 @@ body {
 .navbar {
   background-color: antiquewhite;
   color: black;
-  width: 100%;
   aspect-ratio: 828/115;
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
+  margin-block: 5%;
+  padding-inline: 2.5%;
 }
 
 .navbar .top {
-  
+  display: flex;
+  margin-bottom: 5%;
 }
-
+.logo {
+  margin-right: auto;
+  h3 {
+    border-block: 2px black solid;
+    width: 40%;
+    font-size: .65rem;
+  }
+}
+.boutons {
+  display: flex;
+  margin-top: auto;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 1.5rem;
+  }
+}
+.boutonnav {
+  margin-inline: auto;
+}
+.boutonmode, .boutoncompte {
+  padding: 2.5%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.boutonpanier {
+  padding-inline: 2%;
+  height: 50%;
+  border-radius: 5px;
+  i {
+    font-size: 1rem;
+    padding-inline: 5px;
+  }
+}
+.boutonpanier:hover {
+  text-decoration: underline;
+}
 .navbar .bas {
   display: flex;
   justify-content: center;
-  .inutiles {
-    display: flex;
-    list-style: none;
+}
+.inutiles {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  li {
+    border-inline: 1px black solid;
+    margin-inline: auto;
     width: 100%;
-    li {
-      border-inline: 1px green solid;
-      margin-inline: auto;
-      width: 100%;
-      aspect-ratio: 3/1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: .75rem;
-    }
-    li:first-of-type {
-      border-left: 2px solid ;
-    }
-    li:last-of-type {
-      border-right: 2px solid;
-    }
+    aspect-ratio: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .75rem;
+  }
+  li:first-of-type {
+    border-left: 2px solid ;
+  }
+  li:last-of-type {
+    border-right: 2px solid;
   }
 }
