@@ -5,7 +5,7 @@ const btnmode = document.querySelector(".boutonmode");
 let clair = localStorage.getItem("mode") === "false";
 
 btnmode.addEventListener("mouseenter", function () {
-  btnmode.style.color = cs.getPropertyValue("--couleur1");
+  btnmode.style.color = cs.getPropertyValue("--couleur4");
 });
 btnmode.addEventListener("mouseleave", function () {
   btnmode.style.color = cs.getPropertyValue("--couleur3");

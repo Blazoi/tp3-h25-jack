@@ -21,20 +21,24 @@ body {
   font-family: "Inknut Antiqua", serif;
   display: flex;
   flex-direction: column;
+  transition: .5s;
 }
 
 /* NAV BAR */
 
 
 .contenu {
+  transition: .5s;
   background-color: var(--couleur2);
   height: 100vh;
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-inline: auto;
 }
 .navbar {
+  width: 95%;
   aspect-ratio: 828/115;
   display: flex;
   flex-direction: column;
@@ -113,4 +117,12 @@ body {
   li:last-of-type {
     border-right: 2px solid var(--couleur3);
   }
+}
+
+ /* BANNIÈRE */
+
+.sectionbanniere {
+  width: 95%;
+  aspect-ratio: 79/25;
+  background-color: var(--couleur4);
 }
