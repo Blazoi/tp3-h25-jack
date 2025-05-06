@@ -5,14 +5,19 @@
   --couleur2: #080810;
   --couleur3: #f5f5f5;
   --couleur4: #1b3d76;
-
-
 }
 
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+
+a {
+  color: var(--couleur3);
+  :hover {
+    color: var(--couleur4);
+  }
 }
 
 body {
@@ -90,7 +95,10 @@ body {
   }
 }
 .boutonpanier:hover {
-  text-decoration: underline;
+  color: var(--couleur4);
+  i {
+    color: var(--couleur4);
+  }
 }
 .navbar .bas {
   display: flex;
@@ -100,16 +108,21 @@ body {
   display: flex;
   list-style: none;
   width: 100%;
+  a {
+    display: flex;
+    width: 100%;
+    color: var(--couleur3);
+  }
   li {
     border-inline: 1px var(--couleur3) solid;
-    margin-inline: auto;
     width: 100%;
+    margin-inline: auto;
     aspect-ratio: 3;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: .75rem;
+    font-size: 1rem;
   }
   li:first-of-type {
     border-left: 2px solid var(--couleur3);
@@ -137,13 +150,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  div {
+  .categorie {
     height: 100%;
     aspect-ratio: 1;
-    background-color: var(--couleur4);
+    background-color: var(--couleur1);
     border-radius: 5px;
+    transition: .15s;
   }
-  div:nth-child(2) {
-    margin-inline: auto;
+  .cat1 {
+    background-image: url(../images/categorie-romansadov2.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .cat2 {
+    background-image: url(../images/categorie-romansadov2.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .cat3 {
+    background-image: url(../images/categorie-romansadov2.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  a {
+    height: 100%;
   }
 }
