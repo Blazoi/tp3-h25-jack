@@ -55,6 +55,32 @@ function modeclair() {
   localStorage.setItem("sombreclair", "clair");
 }
 
+// Produits
 
+document.addEventListener("DOMContentLoaded", function () {
+  const api = "http://localhost:8080/ords/tp3/produits/";
+  const listeDeProduits = document.querySelector(".produits");
 
-// Espace entre les produits
+  fetch(api).then((response) => {
+    if (response) {
+      return response.json();
+    }
+  });
+
+  function afficherProduits(produits) {
+    listeDeProduits.innerHTML = "";
+
+    produits.forEach((produit) => {
+      const arriere = document.createElement("div");
+      arriere.className = "produit";
+      arriere.innerHTML = `
+          <img src="${produit.image}" alt="">
+          <h3 class="titre">${produit.titre}</h3>
+          <div class="desc">
+            <p class="lang">${produit.lang}</p>
+            <p class="prix">${produit.prix}$</p>
+          </div>
+        `;
+    });
+  }
+});

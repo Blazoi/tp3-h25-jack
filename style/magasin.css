@@ -131,7 +131,7 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  aspect-ratio: 3/5;
+  aspect-ratio: 1/2;
   margin-right: auto;
   h1 {
     margin-left: 5%;
