@@ -58,14 +58,22 @@ function modeclair() {
 // Produits
 
 document.addEventListener("DOMContentLoaded", function () {
-  const api = "http://localhost:8080/ords/tp3/produits/";
+  const api = "http://localhost:8080/ords/tp3a/produits/";
   const listeDeProduits = document.querySelector(".produits");
 
-  fetch(api).then((response) => {
-    if (response) {
-      return response.json();
-    }
-  });
+  fetch(api)
+    .then((response) => {
+      if (response) {
+        return response.json();
+      }
+      throw new Error("Network response was not ok.");
+    })
+    .then((produits) => {
+      afficherProduits(produits.items);
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
 
   function afficherProduits(produits) {
     listeDeProduits.innerHTML = "";
@@ -75,12 +83,21 @@ document.addEventListener("DOMContentLoaded", function () {
       arriere.className = "produit";
       arriere.innerHTML = `
           <img src="${produit.image}" alt="">
-          <h3 class="titre">${produit.titre}</h3>
+          <div class="titrediv">
+            <h3 class="titre">${produit.nom_produit}</h3>
+          </div>
           <div class="desc">
-            <p class="lang">${produit.lang}</p>
+            <p class="lang">${produit.langue}</p>
             <p class="prix">${produit.prix}$</p>
           </div>
         `;
+      listeDeProduits.appendChild(arriere);
     });
   }
 });
+
+
+// Animation texte
+
+const texte = document.querySelector(".titre")
+
