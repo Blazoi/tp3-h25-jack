@@ -58,14 +58,3 @@ function modeclair() {
 
 
 // Espace entre les produits
-const produits = document.querySelector(".produits");
-const produit = document.querySelector(".produit");
-
-alignement()
-
-function alignement() {
-  const prcs = getComputedStyle(produit);
-  produits.style.gap = gap;
-  console.log(gap);
-}
-window.addEventListener("resize", alignement)

@@ -126,12 +126,13 @@ body {
 }
 /* Triage */
 .triage {
-  width: 25%;
+  width: 24%;
   background-color: var(--couleur5);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   aspect-ratio: 3/5;
+  margin-right: auto;
   h1 {
     margin-left: 5%;
     font-size: 1.5rem;
@@ -148,7 +149,7 @@ body {
 /* Produits */
 .produits {
   /* overflow: scroll; */
-  width: 75%;
+  width: 74%;
   aspect-ratio: 1;
   background-color: #3a4529;
   display: flex;
@@ -164,7 +165,36 @@ body {
   aspect-ratio: 3/4;
   background-color: aqua;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 .produit:nth-child(3n-1) {
   margin-inline: auto;
+}
+
+
+/* Produits uniques */
+.produit img {
+  width: 95%;
+  aspect-ratio: 1;
+  object-fit: cover;  
+  margin-inline: auto;
+  margin-top: 2px;
+}
+.produit .titre {
+  color: var(--couleur3);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.produit .desc {
+  display: flex;
+  width: 100%;
+  .lang {
+    margin-right: auto;
+    margin-left: 5px;
+  }
+  .prix {
+    margin-right: 5%;
+  }
 }
