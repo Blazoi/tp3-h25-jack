@@ -20,6 +20,34 @@ btncompte.addEventListener("mouseleave", function () {
   btncompte.style.color = cs.getPropertyValue("--couleur3");
 });
 
+// Bouton panier hover
+
+const btnpanier = document.querySelector(".boutonpanier");
+const btnpaniericn = document.querySelector(".bx-cart-alt");
+btnpanier.addEventListener("mouseenter", function () {
+  btnpanier.innerHTML = 'Panier <i class="bx bxs-cart-alt"></i>';
+});
+btnpanier.addEventListener("mouseleave", function () {
+  btnpanier.innerHTML = 'Panier <i class="bx bx-cart-alt"></i>';
+});
+
+// Logo
+const logo = document.querySelector(".logo");
+const h1 = document.querySelector(".logo h1");
+const h3 = document.querySelector(".logo h3");
+
+logo.addEventListener("mouseenter", function () {
+  h1.style.color = cs.getPropertyValue("--couleur4");
+  h3.style.color = cs.getPropertyValue("--couleur4");
+  h3.style.borderBlock = `${cs.getPropertyValue("--couleur4")} solid 2px`;
+});
+
+logo.addEventListener("mouseleave", function () {
+  h1.style.color = cs.getPropertyValue("--couleur3");
+  h3.style.color = cs.getPropertyValue("--couleur3");
+  h3.style.borderBlock = `${cs.getPropertyValue("--couleur3")} solid 2px`;
+});
+
 if (localStorage.getItem("sombreclair") == "clair") {
   modeclair();
 } else {
@@ -100,6 +128,3 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   }
 });
-
-
-// Animation texte

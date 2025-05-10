@@ -5,7 +5,7 @@
   --couleur2: #080810;
   --couleur3: #f5f5f5;
   --couleur4: #1b3d76;
-  --couleur5: #4164a0;
+  --couleur5: #1a2e49;
 }
 
 * {
@@ -120,9 +120,9 @@ body {
 /* Vente */
 .sectionvente {
   width: 95%;
-  background-color: var(--couleur4);
   display: flex;
   align-items: start;
+  overflow: hidden;
 }
 /* Triage */
 .triage {
@@ -158,6 +158,10 @@ body {
   align-content: flex-start;
   border-radius: 5px;
   gap: 25px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar-track {
+    background-color: red;
+  }
 }
 .produit {
   width: 30%;
