@@ -93,11 +93,13 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
       listeDeProduits.appendChild(arriere);
     });
+    document.querySelectorAll(".titre").forEach((texte) => {
+      if (texte.textContent.length > 15) {
+        texte.style.animation = "translation 15s ease-in-out infinite";
+      }
+    })
   }
 });
 
 
 // Animation texte
-
-const texte = document.querySelector(".titre")
-
