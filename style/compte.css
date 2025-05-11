@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --couleur1: #090909;
+  --couleur2: #262626;
+  --couleur3: #f5f5f5;
+  --couleur4: #c0d3fa;
+  --couleur5: #6c82a1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+a {
+  color: var(--couleur3);
+}
+
+body {
+  background-color: var(--couleur1);
+  color: var(--couleur3);
+  font-family: "Inknut Antiqua", serif;
+  display: flex;
+  flex-direction: column;
+  transition: .5s;
+}
+
+/* NAV BAR */
+
+
+.contenu {
+  transition: .5s;
+  background-color: var(--couleur2);
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+}
+.navbar {
+  width: 95%;
+  aspect-ratio: 828/115;
+  display: flex;
+  flex-direction: column;
+  margin-block: 5%;
+  padding-inline: 2.5%;
+}
+
+.navbar .top {
+  display: flex;
+  margin-bottom: 5%;
+}
+.logo {
+  margin-right: auto;
+  h3 {
+    border-block: 2px var(--couleur3) solid;
+    width: 40%;
+    font-size: .65rem;
+  }
+}
+.boutons {
+  display: flex;
+  margin-top: auto;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 1.5rem;
+    transition: .15s;
+  }
+}
+.boutonmode, .boutoncompte {
+  padding: 2.5%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--couleur3);
+}
+.boutonpanier {
+  padding-inline: 2%;
+  height: 50%;
+  border-radius: 5px;
+  color: var(--couleur3);
+  i {
+    font-size: 1rem;
+    padding-inline: 5px;
+  }
+}
+.boutonpanier:hover {
+  text-decoration: underline;
+}
+
+
+/* Informations */
+
+.compte {
+  background-color: #343f4e95;
+  border-radius: 15px;
+  padding-block: 25px;
+  width: 80%;
+  aspect-ratio: 3/2;
+  text-align: center;
+}
+.pdp {
+  width: 25%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-inline: auto;
+
+  img {
+    width: 100%;
+    object-fit: contain;
+    margin: auto;
+  }
+}
+
+.infos {
+  width: 100%;
+  aspect-ratio: 625/164;
+  margin-block: 10px;
+}
+
+.panier a {
+  background-color: #1E242C;
+  padding: 5px 25px;
+  border-radius: 5px;
+  transition: .25s;
+}
+
+.panier a:hover {
+  background-color: #090909;
+}
