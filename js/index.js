@@ -47,10 +47,11 @@ btnmode.onclick = () => {
 };
 
 function modesombre() {
-  root.style.setProperty("--couleur1", "#101017");
-  root.style.setProperty("--couleur2", "#080810");
-  root.style.setProperty("--couleur3", "#f5f5f5");
-  root.style.setProperty("--couleur4", "#1b3d76");
+  root.style.setProperty("--couleur1", "#090909");
+  root.style.setProperty("--couleur2", "#262626");
+  root.style.setProperty("--couleur3", "#f6f6f6");
+  root.style.setProperty("--couleur4", "#c0d3fa");
+  root.style.setProperty("--couleur5", "#444454");
   clair = false;
   console.log(clair);
   btnmode.innerHTML = '<i class="bx bxs-sun"></i>';
