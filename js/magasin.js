@@ -68,16 +68,19 @@ function modesombre() {
   root.style.setProperty("--couleur3", "#f6f6f6");
   root.style.setProperty("--couleur4", "#c0d3fa");
   root.style.setProperty("--couleur5", "#444454");
+  root.style.setProperty("--couleurbordure", "#8c8c8c");
   clair = false;
   console.log(clair);
   btnmode.innerHTML = '<i class="bx bxs-sun"></i>';
   localStorage.setItem("sombreclair", "sombre");
 }
 function modeclair() {
-  root.style.setProperty("--couleur1", "#f5f5f5");
-  root.style.setProperty("--couleur2", "#f8f8f8");
-  root.style.setProperty("--couleur3", "#000000");
-  root.style.setProperty("--couleur4", "#1b3d76");
+  root.style.setProperty("--couleur1", "#e4e4e4");
+  root.style.setProperty("--couleur2", "#fff");
+  root.style.setProperty("--couleur3", "#000");
+  root.style.setProperty("--couleur4", "#6c82a1");
+  root.style.setProperty("--couleur5", "#c0d3fa");
+  root.style.setProperty("--couleurbordure", "#c6c6c6");
   clair = true;
   console.log(clair);
   btnmode.innerHTML = '<i class="bx bxs-moon"></i>';
@@ -108,8 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
     listeDeProduits.innerHTML = "";
 
     produits.forEach((produit) => {
-      const arriere = document.createElement("div");
+      const arriere = document.createElement("a");
       arriere.className = "produit";
+      arriere.href = "produit.html"
       arriere.innerHTML = `
           <img src="${produit.image}" alt="">
           <div class="titrediv">
