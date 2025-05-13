@@ -123,7 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="lang">${produit.langue}</p>
             <p class="prix">${produit.prix}$</p>
           </div>
-        `;
+      `;
+      
+      arriere.onclick = () => {}
+
       listeDeProduits.appendChild(arriere);
     });
     document.querySelectorAll(".titre").forEach((texte) => {
@@ -133,3 +136,5 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   }
 });
+
+

@@ -177,7 +177,7 @@ body {
 .produit:hover {
   background-color: var(--couleur4);
   h3, p {
-    color: var(--couleur1);
+    color: var(--couleur2);
   }
 }
 

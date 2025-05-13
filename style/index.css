@@ -59,6 +59,7 @@ body {
 .logo {
   margin-right: auto;
   h3 {
+    color: var(--couleur3);
     border-block: 2px var(--couleur3) solid;
     width: 40%;
     font-size: .65rem;
