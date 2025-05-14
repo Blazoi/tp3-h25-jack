@@ -1,12 +1,9 @@
-const { response } = require("express");
-
 const root = document.querySelector(":root");
 const cs = getComputedStyle(root);
 const btnmode = document.querySelector(".boutonmode");
 const btncompte = document.querySelector(".boutoncompte");
 
 let clair = localStorage.getItem("mode") === "false";
-
 // Bouton mode sombre hover
 btnmode.addEventListener("mouseenter", function () {
   btnmode.style.color = cs.getPropertyValue("--couleur4");
@@ -112,3 +109,92 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   afficherproduit(JSON.parse(localStorage.getItem("produit")));
 });
+
+// Bouton Ajouter
+const btnajouter = document.querySelector(".ajouterpanier");
+const apipaniers = "http://localhost:8080/ords/tp3a/paniers/";
+const apiitems = "http://localhost:8080/ords/tp3a/items/";
+const apiclients = "http://localhost:8080/ords/tp3a/clients/";
+
+console.log(`${dd}, ${mm}, ${yy}`);
+
+btnajouter.onclick = () => {
+  // Lien de la conversation avec chatGPT
+  // https://chatgpt.com/share/682484e1-640c-800e-a6bb-4bf8f413ad61
+
+  // Transformer le produit en item
+
+  const iditem = String(Date.now()).slice(-5);
+  let qte = 0;
+  const item = {
+    id_item: iditem,
+    qte: qte + 1,
+    produit_id_produit: JSON.parse(localStorage.getItem("produit")).id_produit,
+    panier_id_client: idclient(),
+    id_produit: JSON.parse(localStorage.getItem("produit")).id_produit,
+  };
+
+  // Aller chercher l'id du client
+  function idclient() {
+    let idduclient = 1;
+    fetch(apiclients)
+      .then((response) => {
+        if (response) {
+          return response.json();
+        }
+        throw new Error("Erreur dans la reponse");
+      })
+      .then((data) => {
+        idduclient = data.items[0].id_client;
+      });
+    return idduclient;
+  }
+
+  fetch(apiitems, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(item),
+  })
+    .then((response) => {
+      if (response) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data);
+    });
+
+  // Ajouter l'item aux paniers
+
+  // Date
+  const aujd = new Date();
+  const dd = String(aujd.getDate()).padStart(2, "0");
+  const mm = String(aujd.getMonth() + 1).padStart(2, "0");
+  const yy = String(aujd.getFullYear()).slice(-2);
+  const datepresente = `${dd}/${mm}/${yy}`;
+
+  const panier = {
+    client_id_client: idclient(),
+    id_client: idclient(),
+    id_item: iditem,
+    date_dajout: datepresente,
+  };
+  fetch(apipaniers, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(panier),
+  })
+    .then((response) => {
+      if (response) {
+        return response.JSON();
+      }
+      throw new Error(response.status);
+    })
+    .then((data) => {
+      console.log("Réponse de l'API:", data);
+    });
+};
