@@ -133,11 +133,14 @@ body {
       margin-inline: auto;
       border-radius: 5px;
       border: var(--couleurbordure) solid 2px;
-      background-color: var(--couleur3);
+      background-color: var(--couleur5);
+      color: var(--couleur3);
       cursor: pointer;
+      transition: .15s;
     }
     button:hover {
-      background-color: var(--couleur5);
+      background-color: var(--couleur4);
+      color: var(--couleur3);
     }
   }
 }

@@ -97,7 +97,8 @@ window.addEventListener("DOMContentLoaded", () => {
       <div class="droite">
         <h1 class="titre">${produit.nom_produit}</h1>
         <div class="info">
-          <p>${produit.prix}</p>
+          <p>${produit.prix}$</p>
+          <button class="ajouterpanier">Ajouter au panier</button>
         </div>
         <div class="para">
           <p>
@@ -116,14 +117,32 @@ const apipaniers = "http://localhost:8080/ords/tp3a/paniers/";
 const apiitems = "http://localhost:8080/ords/tp3a/items/";
 const apiclients = "http://localhost:8080/ords/tp3a/clients/";
 
-console.log(`${dd}, ${mm}, ${yy}`);
+const test1 = {
+  id_produit: 9,
+  nom_produit: "test",
+  prix: 0,
+  description: "vide",
+  stock: 1,
+  categorie: "aucune",
+  langue: "fr",
+  auteur: "moi",
+  genre: "code",
+  datepublication: "02/02/22",
+  image: "../images/smile.jpg",
+};
+
+localStorage.setItem("produit", JSON.stringify(test1));
 
 btnajouter.onclick = () => {
   // Lien de la conversation avec chatGPT
-  // https://chatgpt.com/share/682484e1-640c-800e-a6bb-4bf8f413ad61
-
   // Transformer le produit en item
-
+    const aujd = new Date();
+  const dd = String(aujd.getDate()).padStart(2, "0");
+  const mm = String(aujd.getMonth() + 1).padStart(2, "0");
+  const yy = String(aujd.getFullYear()).slice(-2);
+  const datepresente = `${dd}/${mm}/${yy}`;
+  console.log(datepresente)
+  console.log("clicked")
   const iditem = String(Date.now()).slice(-5);
   let qte = 0;
   const item = {
@@ -169,11 +188,7 @@ btnajouter.onclick = () => {
   // Ajouter l'item aux paniers
 
   // Date
-  const aujd = new Date();
-  const dd = String(aujd.getDate()).padStart(2, "0");
-  const mm = String(aujd.getMonth() + 1).padStart(2, "0");
-  const yy = String(aujd.getFullYear()).slice(-2);
-  const datepresente = `${dd}/${mm}/${yy}`;
+
 
   const panier = {
     client_id_client: idclient(),
