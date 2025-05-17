@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     produits.forEach((produit) => {
       const arriere = document.createElement("a");
       arriere.className = "produit";
-      arriere.href = "produit.html"
+      arriere.href = "produit.html";
       arriere.innerHTML = `
           <img src="${produit.image}" alt="">
           <div class="titrediv">
@@ -124,8 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="prix">${produit.prix}$</p>
           </div>
       `;
-      
-      arriere.onclick = () => {}
+
+      arriere.onclick = () => {
+        localStorage.setItem("produit", JSON.stringify(produit));
+      };
 
       listeDeProduits.appendChild(arriere);
     });
@@ -133,8 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (texte.textContent.length > 15) {
         texte.style.animation = "translation 15s ease-in-out infinite";
       }
-    })
+    });
   }
 });
-
-

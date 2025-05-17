@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
   --couleur1: #090909;
@@ -24,14 +24,13 @@ body {
   font-family: "Inknut Antiqua", serif;
   display: flex;
   flex-direction: column;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 /* NAV BAR */
 
-
 .contenu {
-  transition: .5s;
+  transition: 0.5s;
   background-color: var(--couleur2);
   border-inline: solid 1px var(--couleurbordure);
   height: 100vh;
@@ -59,7 +58,7 @@ body {
   h3 {
     border-block: 2px var(--couleur3) solid;
     width: 40%;
-    font-size: .65rem;
+    font-size: 0.65rem;
   }
 }
 .boutons {
@@ -70,10 +69,11 @@ body {
   align-items: center;
   i {
     font-size: 1.5rem;
-    transition: .15s;
+    transition: 0.15s;
   }
 }
-.boutonmode, .boutoncompte {
+.boutonmode,
+.boutoncompte {
   padding: 2.5%;
   aspect-ratio: 1;
   display: flex;
@@ -152,7 +152,7 @@ body {
 .produits {
   /* overflow: scroll; */
   width: 74%;
-  aspect-ratio: 1;
+  aspect-ratio: 32/27;
   display: flex;
   flex-wrap: wrap;
   align-items: start;
@@ -160,7 +160,9 @@ body {
   align-content: flex-start;
   border-radius: 5px;
   gap: 25px;
-  overflow-y: scroll;
+  overflow: scroll;
+  scrollbar-width: none;
+
   ::-webkit-scrollbar-track {
     background-color: red;
   }
@@ -172,21 +174,21 @@ body {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  transition: .25s;
+  transition: 0.25s;
 }
 .produit:hover {
   background-color: var(--couleur4);
-  h3, p {
+  h3,
+  p {
     color: var(--couleur2);
   }
 }
-
 
 /* Produits uniques */
 .produit img {
   width: 95%;
   aspect-ratio: 1;
-  object-fit: contain;  
+  object-fit: contain;
   margin-inline: auto;
   margin-top: 5px;
   border-radius: 5px;
@@ -201,7 +203,7 @@ body {
 }
 .produit .titre {
   color: var(--couleur3);
-  font-size: .75rem;
+  font-size: 0.75rem;
   width: 11ch;
   white-space: nowrap;
   text-align: center;
@@ -211,7 +213,8 @@ body {
   0% {
     transform: translateX(0);
   }
-  40%, 50% {
+  40%,
+  50% {
     transform: translateX(-100%);
   }
   90% {

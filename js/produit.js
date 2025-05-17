@@ -1,3 +1,6 @@
+console.log(localStorage.getItem("produit"))
+
+
 const root = document.querySelector(":root");
 const cs = getComputedStyle(root);
 const btnmode = document.querySelector(".boutonmode");
@@ -109,22 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
   }
   afficherproduit(JSON.parse(localStorage.getItem("produit")));
-  const apiclients = "http://localhost:8080/ords/tp3a/clients/";
-
-  // Aller chercher l'id client
-  // function idclient() {
-  //   fetch(apiclients)
-  //     .then((response) => {
-  //       if (!response) {
-  //         throw new Error("Erreur");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       console.log("idclient: " + data.items[0].id_client)
-  //       return data.items[0].id_client;
-  //     });
-  // }
 
   const btnajouter = document.querySelector(".ajouterpanier");
 
@@ -133,11 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function ajouterpanier() {
     const iditem = String(Date.now()).slice(-5);
-    const idproduit = JSON.parse(localStorage.getItem("produit")).id_produit
+    const idproduit = JSON.parse(localStorage.getItem("produit")).id_produit;
 
     const item_panier = {
       client_id_client: 89521,
-      id_item: Number(iditem),
+      item_id_item: Number(iditem),
       id_panier: Number(iditem) + 10,
     };
     const produit_item = {
@@ -170,45 +157,5 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(text2);
   }
 
-  btnajouter.onclick = () => {
-    // fetch("http://localhost:8080/ords/tp3a/paniers/", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(item_panier),
-    // })
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       console.log("Succes de l'ajout");
-    //       return response.json();
-    //     } else {
-    //       throw new Error("erreur " + response.status);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Échec de l'ajout :", error);
-    //   });
-
-    // fetch("http://localhost:8080/ords/tp3a/items/", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(produit_item),
-    // })
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       console.log("Succes de l'ajout");
-    //       return response.json();
-    //     } else {
-    //       throw new Error("erreur " + response.status);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Échec de l'ajout :", error);
-    //   });
-
-    ajouterpanier();
-  };
+  btnajouter.onclick = ajouterpanier();
 });
