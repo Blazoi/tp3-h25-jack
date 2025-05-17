@@ -86,7 +86,7 @@ function modeclair() {
   localStorage.setItem("sombreclair", "clair");
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const produitelement = document.querySelector(".produit");
 
   function afficherproduit(produit) {
@@ -109,107 +109,106 @@ window.addEventListener("DOMContentLoaded", () => {
       `;
   }
   afficherproduit(JSON.parse(localStorage.getItem("produit")));
-});
+  const apiclients = "http://localhost:8080/ords/tp3a/clients/";
 
-// Bouton Ajouter
-const btnajouter = document.querySelector(".ajouterpanier");
-const apipaniers = "http://localhost:8080/ords/tp3a/paniers/";
-const apiitems = "http://localhost:8080/ords/tp3a/items/";
-const apiclients = "http://localhost:8080/ords/tp3a/clients/";
+  // Aller chercher l'id client
+  // function idclient() {
+  //   fetch(apiclients)
+  //     .then((response) => {
+  //       if (!response) {
+  //         throw new Error("Erreur");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log("idclient: " + data.items[0].id_client)
+  //       return data.items[0].id_client;
+  //     });
+  // }
 
-const test1 = {
-  id_produit: 9,
-  nom_produit: "test",
-  prix: 0,
-  description: "vide",
-  stock: 1,
-  categorie: "aucune",
-  langue: "fr",
-  auteur: "moi",
-  genre: "code",
-  datepublication: "02/02/22",
-  image: "../images/smile.jpg",
-};
+  const btnajouter = document.querySelector(".ajouterpanier");
 
-localStorage.setItem("produit", JSON.stringify(test1));
+  const apipaniers = "http://localhost:8080/ords/tp3a/paniers/";
+  const apiitems = "http://localhost:8080/ords/tp3a/items/";
 
-btnajouter.onclick = () => {
-  // Lien de la conversation avec chatGPT
-  // Transformer le produit en item
-    const aujd = new Date();
-  const dd = String(aujd.getDate()).padStart(2, "0");
-  const mm = String(aujd.getMonth() + 1).padStart(2, "0");
-  const yy = String(aujd.getFullYear()).slice(-2);
-  const datepresente = `${dd}/${mm}/${yy}`;
-  console.log(datepresente)
-  console.log("clicked")
-  const iditem = String(Date.now()).slice(-5);
-  let qte = 0;
-  const item = {
-    id_item: iditem,
-    qte: qte + 1,
-    produit_id_produit: JSON.parse(localStorage.getItem("produit")).id_produit,
-    panier_id_client: idclient(),
-    id_produit: JSON.parse(localStorage.getItem("produit")).id_produit,
-  };
+  async function ajouterpanier() {
+    const iditem = String(Date.now()).slice(-5);
+    const idproduit = JSON.parse(localStorage.getItem("produit")).id_produit
 
-  // Aller chercher l'id du client
-  function idclient() {
-    let idduclient = 1;
-    fetch(apiclients)
-      .then((response) => {
-        if (response) {
-          return response.json();
-        }
-        throw new Error("Erreur dans la reponse");
-      })
-      .then((data) => {
-        idduclient = data.items[0].id_client;
-      });
-    return idduclient;
+    const item_panier = {
+      client_id_client: 89521,
+      id_item: Number(iditem),
+      id_panier: Number(iditem) + 10,
+    };
+    const produit_item = {
+      id_item: Number(iditem),
+      qte: 1,
+      produit_id_produit: idproduit,
+      panier_id_panier: Number(iditem) + 10,
+    };
+
+    const nouveaupanier = await fetch(apipaniers, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item_panier),
+    });
+
+    const text = await nouveaupanier.text();
+    console.log(text);
+
+    const nouvelitem = await fetch(apiitems, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(produit_item),
+    });
+
+    const text2 = await nouvelitem.text();
+    console.log(text2);
   }
 
-  fetch(apiitems, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(item),
-  })
-    .then((response) => {
-      if (response) {
-        return response.json();
-      }
-    })
-    .then((data) => {
-      console.log(data);
-    });
+  btnajouter.onclick = () => {
+    // fetch("http://localhost:8080/ords/tp3a/paniers/", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(item_panier),
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       console.log("Succes de l'ajout");
+    //       return response.json();
+    //     } else {
+    //       throw new Error("erreur " + response.status);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Échec de l'ajout :", error);
+    //   });
 
-  // Ajouter l'item aux paniers
+    // fetch("http://localhost:8080/ords/tp3a/items/", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(produit_item),
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       console.log("Succes de l'ajout");
+    //       return response.json();
+    //     } else {
+    //       throw new Error("erreur " + response.status);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Échec de l'ajout :", error);
+    //   });
 
-  // Date
-
-
-  const panier = {
-    client_id_client: idclient(),
-    id_client: idclient(),
-    id_item: iditem,
-    date_dajout: datepresente,
+    ajouterpanier();
   };
-  fetch(apipaniers, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(panier),
-  })
-    .then((response) => {
-      if (response) {
-        return response.JSON();
-      }
-      throw new Error(response.status);
-    })
-    .then((data) => {
-      console.log("Réponse de l'API:", data);
-    });
-};
+});
