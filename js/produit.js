@@ -157,5 +157,5 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(text2);
   }
 
-  btnajouter.onclick = ajouterpanier();
+  btnajouter.onclick = ajouterpanier;
 });
