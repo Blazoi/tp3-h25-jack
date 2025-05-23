@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 const root = document.querySelector(":root");
 const cs = getComputedStyle(root);
 const btnmode = document.querySelector(".boutonmode");
