@@ -22,17 +22,6 @@ btncompte.addEventListener("mouseleave", function () {
   btncompte.style.color = cs.getPropertyValue("--couleur3");
 });
 
-// Bouton panier hover
-
-const btnpanier = document.querySelector(".boutonpanier");
-const btnpaniericn = document.querySelector(".bx-cart-alt");
-btnpanier.addEventListener("mouseenter", function () {
-  btnpanier.innerHTML = 'Panier <i class="bx bxs-cart-alt"></i>';
-});
-btnpanier.addEventListener("mouseleave", function () {
-  btnpanier.innerHTML = 'Panier <i class="bx bx-cart-alt"></i>';
-});
-
 // Logo
 const logo = document.querySelector(".logo");
 const h1 = document.querySelector(".logo h1");
@@ -90,33 +79,34 @@ function modeclair() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const produitelement = document.querySelector(".produit");
-
-  function afficherproduit(produit) {
-    produitelement.innerHTML = `
-      <div class="gauche">
-        <img src="${produit.image}" alt="">
-      </div>
-      <div class="droite">
-        <h1 class="titre">${produit.nom_produit}</h1>
-        <div class="info">
-          <p>${produit.prix}$</p>
-          <button class="ajouterpanier">Ajouter au panier</button>
-        </div>
-        <div class="para">
-          <p>
-            ${produit.description}
-          </p>
-        </div>
-      </div>
-      `;
-  }
-  afficherproduit(JSON.parse(localStorage.getItem("produit")));
-
-  const btnajouter = document.querySelector(".ajouterpanier");
-
   const apipaniers = "http://localhost:8080/ords/tp3a/paniers/";
   const apiitems = "http://localhost:8080/ords/tp3a/items/";
+  actualiserpanier()
+  const produitelement = document.querySelector(".produit");
+  
+  function afficherproduit(produit) {
+    produitelement.innerHTML = `
+    <div class="gauche">
+    <img src="${produit.image}" alt="">
+    </div>
+    <div class="droite">
+    <h1 class="titre">${produit.nom_produit}</h1>
+    <div class="info">
+    <p>${produit.prix}$</p>
+    <button class="ajouterpanier">Ajouter au panier</button>
+    </div>
+    <div class="para">
+    <p>
+    ${produit.description}
+    </p>
+    </div>
+    </div>
+    `;
+  }
+  afficherproduit(JSON.parse(localStorage.getItem("produit")));
+  
+  const btnajouter = document.querySelector(".ajouterpanier");
+  
 
   async function ajouterpanier() {
     const iditem = String(Date.now()).slice(-5);
@@ -155,7 +145,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const text2 = await nouvelitem.text();
     console.log(text2);
+    actualiserpanier();
   }
 
   btnajouter.onclick = ajouterpanier;
+  const numpanier = document.querySelector(".boutonpanier");
+  async function actualiserpanier() {
+    await fetch(apipaniers)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        numpanier.innerHTML = `Panier <i class="bx bx-cart-alt"></i> (${data.items.length})`
+      })
+  }
 });

@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 const root = document.querySelector(":root");
 const cs = getComputedStyle(root);
@@ -20,17 +19,6 @@ btncompte.addEventListener("mouseenter", function () {
 });
 btncompte.addEventListener("mouseleave", function () {
   btncompte.style.color = cs.getPropertyValue("--couleur3");
-});
-
-// Bouton panier hover
-
-const btnpanier = document.querySelector(".boutonpanier");
-const btnpaniericn = document.querySelector(".bx-cart-alt");
-btnpanier.addEventListener("mouseenter", function () {
-  btnpanier.innerHTML = 'Panier <i class="bx bxs-cart-alt"></i>';
-});
-btnpanier.addEventListener("mouseleave", function () {
-  btnpanier.innerHTML = 'Panier <i class="bx bx-cart-alt"></i>';
 });
 
 // Logo
@@ -92,11 +80,11 @@ function modeclair() {
 // Produits
 
 document.addEventListener("DOMContentLoaded", function () {
-  const api = "http://localhost:8080/ords/tp3a/produits/";
+  const apiproduits = "http://localhost:8080/ords/tp3a/produits/";
   const listeDeProduits = document.querySelector(".produits");
-
-  fetch(api)
-    .then((response) => {
+  
+  fetch(apiproduits)
+  .then((response) => {
       if (response) {
         return response.json();
       }
@@ -108,29 +96,29 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
     });
-
-  function afficherProduits(produits) {
-    listeDeProduits.innerHTML = "";
-
-    produits.forEach((produit) => {
-      const arriere = document.createElement("a");
-      arriere.className = "produit";
+    
+    function afficherProduits(produits) {
+      listeDeProduits.innerHTML = "";
+      
+      produits.forEach((produit) => {
+        const arriere = document.createElement("a");
+        arriere.className = "produit";
       arriere.href = "produit.html";
       arriere.innerHTML = `
-          <img src="${produit.image}" alt="">
-          <div class="titrediv">
-            <h3 class="titre">${produit.nom_produit}</h3>
-          </div>
-          <div class="desc">
-            <p class="lang">${produit.langue}</p>
-            <p class="prix">${produit.prix}$</p>
-          </div>
+      <img src="${produit.image}" alt="">
+      <div class="titrediv">
+      <h3 class="titre">${produit.nom_produit}</h3>
+      </div>
+      <div class="desc">
+      <p class="lang">${produit.langue}</p>
+      <p class="prix">${produit.prix}$</p>
+      </div>
       `;
-
+      
       arriere.onclick = () => {
         localStorage.setItem("produit", JSON.stringify(produit));
       };
-
+      
       listeDeProduits.appendChild(arriere);
     });
     document.querySelectorAll(".titre").forEach((texte) => {
@@ -139,4 +127,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  
+  const apipaniers = "http://localhost:8080/ords/tp3a/paniers/"
+  const numpanier = document.querySelector(".boutonpanier");
+  function actualiserpanier() {
+    fetch(apipaniers)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        numpanier.innerHTML = `Panier <i class="bx bx-cart-alt"></i> (${data.items.length})`
+      })
+  }
+  actualiserpanier()
 });

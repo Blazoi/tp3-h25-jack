@@ -20,18 +20,6 @@ btncompte.addEventListener("mouseleave", function () {
   btncompte.style.color = cs.getPropertyValue("--couleur3");
 });
 
-// Bouton panier hover
-
-const btnpanier = document.querySelector(".boutonpanier");
-const btnpaniericn = document.querySelector(".bx-cart-alt");
-btnpanier.addEventListener("mouseenter", function () {
-  btnpanier.innerHTML = 'Panier <i class="bx bxs-cart-alt"></i>';
-});
-btnpanier.addEventListener("mouseleave", function () {
-  btnpanier.innerHTML = 'Panier <i class="bx bx-cart-alt"></i>';
-});
-
-
 if (localStorage.getItem("sombreclair") == "clair") {
   modeclair();
 } else {
@@ -111,3 +99,15 @@ cat3.addEventListener("mouseenter", function () {
 cat3.addEventListener("mouseleave", function () {
   cat3.style.backgroundImage = "url(../images/categorie-romansadov2.png)";
 });
+const apipaniers = "http://localhost:8080/ords/tp3a/paniers/";
+const numpanier = document.querySelector(".boutonpanier");
+function actualiserpanier() {
+  fetch(apipaniers)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      numpanier.innerHTML = `Panier <i class="bx bx-cart-alt"></i> (${data.items.length})`;
+    });
+}
+actualiserpanier();
